@@ -8,7 +8,7 @@ const client = createClient({
 
 export default async function AdsSection() {
   
-  let adsItems = [];
+  let adsItems: any[] = [];
   try {
     const adsRes = await client.getEntries({ 
       content_type: 'iklan', 

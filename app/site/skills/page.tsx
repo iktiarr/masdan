@@ -38,8 +38,10 @@ const SECTION_INFO = {
   },
 };
 
+type SectionKey = keyof typeof SECTION_INFO;
+
 export default function SkillsPage() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<Record<SectionKey, any[]> | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -57,14 +59,12 @@ export default function SkillsPage() {
         }));
 
         setData({
-          programming: items.filter((v: any) => v.kategori === "pemprograman"),
-          frameworks: items.filter((v: any) => v.kategori === "framework"),
-          tools: items.filter((v: any) => v.kategori === "alat"),
-          creative: items.filter((v: any) => v.kategori === "kreatif"),
-          experiance: items.filter((v: any) => v.kategori === "pengalaman"),
+          programming: items.filter((v) => v.kategori === "pemprograman"),
+          frameworks: items.filter((v) => v.kategori === "framework"),
+          tools: items.filter((v) => v.kategori === "alat"),
+          creative: items.filter((v) => v.kategori === "kreatif"),
+          experiance: items.filter((v) => v.kategori === "pengalaman"),
         });
-      } catch (e) {
-        console.error("Error fetching skills:", e);
       } finally {
         setLoading(false);
       }
@@ -81,13 +81,10 @@ export default function SkillsPage() {
     );
   }
 
-  const SECTIONS = Object.keys(SECTION_INFO);
+  const SECTIONS: SectionKey[] = Object.keys(SECTION_INFO) as SectionKey[];
 
   return (
-    <section
-      id="skills"
-      className="relative py-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 px-6"
-    >
+    <section id="skills" className="relative py-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 px-6">
       <header className="text-center mb-20 space-y-4" data-aos="fade-down">
         <h2 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white tracking-tighter">
           Keahlian &{" "}
@@ -106,7 +103,6 @@ export default function SkillsPage() {
           const section = SECTION_INFO[key];
           const items = data[key];
           if (!items || items.length === 0) return null;
-
           const Icon = section.icon;
 
           return (
@@ -120,10 +116,7 @@ export default function SkillsPage() {
                     <Icon size={24} />
                   </div>
                   <div>
-                    <h3
-                      id={`skill-${key}`}
-                      className="text-2xl font-bold text-gray-900 dark:text-white"
-                    >
+                    <h3 id={`skill-${key}`} className="text-2xl font-bold text-gray-900 dark:text-white">
                       {section.title}
                     </h3>
                     <p className="text-gray-500 dark:text-gray-400 text-sm max-w-lg">
@@ -137,7 +130,7 @@ export default function SkillsPage() {
                 className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-12"
                 role="list"
               >
-                {items.map((item: any, idx: number) => (
+                {items.map((item, idx) => (
                   <li
                     key={item.id}
                     data-aos="fade-up"
