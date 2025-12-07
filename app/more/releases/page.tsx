@@ -3,41 +3,26 @@
 import { motion } from "framer-motion";
 import { GitCommit, Tag, Calendar, ArrowLeft, CheckCircle2, AlertCircle, Zap } from "lucide-react";
 import Link from "next/link";
+import TombolKembali from "@/app/asset/tombol_kembali";
 
 const RELEASES = [
   {
-    version: "v2.0.0",
-    date: "22 November 2025",
-    title: "Major UI Overhaul & Digital Store",
+    version: "v1.0.1-build.2025.12",
+    date: "8 Desember 2025",
+    title: "Perbaikan bug dan kesalahan",
     isLatest: true,
-    description: "Pembaruan besar-besaran pada antarmuka pengguna dan peluncuran fitur toko digital.",
     changes: [
-      { type: "new", text: "Meluncurkan halaman Digital Store dengan integrasi WhatsApp." },
-      { type: "new", text: "Menambahkan fitur Filter & Search yang responsif pada katalog." },
-      { type: "update", text: "Redesain total Home Page dengan gaya Dark Mode Premium." },
-      { type: "fix", text: "Memperbaiki bug layout pada tampilan mobile." }
+      { type: "update", text: "Memperbaharui desain banner ads agar lebih sesuai" },
+      { type: "fix", text: "Memperbaiki kesalahan kode" }
     ]
   },
   {
-    version: "v1.5.2",
-    date: "7 November 2025",
-    title: "Performance Optimization",
+    version: "v1.0.0-build.2025.12",
+    date: "7 Desember 2025",
+    title: "Peluncuran Perdana",
     isLatest: false,
-    description: "Fokus pada peningkatan kecepatan loading dan SEO.",
     changes: [
-      { type: "update", text: "Migrasi gambar ke format WebP untuk loading lebih cepat." },
-      { type: "update", text: "Menambahkan Metadata SEO dinamis di setiap halaman." },
-      { type: "fix", text: "Memperbaiki link sosial media yang rusak." }
-    ]
-  },
-  {
-    version: "v1.0.0",
-    date: "1 November 2025",
-    title: "Initial Release",
-    isLatest: false,
-    description: "Peluncuran pertama website portfolio personal.",
-    changes: [
-      { type: "new", text: "Halaman Portfolio Projects." },
+      { type: "new", text: "Halaman utama" },
     ]
   }
 ];
@@ -60,10 +45,7 @@ export default function ReleasesPage() {
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <div className="mb-12">
-          <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-lime-500/20 hover:border-lime-500/50 transition-all duration-300 group backdrop-blur-sm">
-              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform text-lime-400" />
-              <span className="text-sm font-medium text-gray-300 group-hover:text-white">Kembali ke Beranda</span>
-          </Link>
+          <TombolKembali/>
         </div>
 
         <div className="mb-16 space-y-4">
@@ -111,9 +93,6 @@ export default function ReleasesPage() {
                    </div>
 
                    <h3 className="text-lg font-bold text-white mb-2">{release.title}</h3>
-                   <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-                     {release.description}
-                   </p>
 
                    <div className="space-y-3 bg-black/20 rounded-xl p-4 border border-white/5">
                       {release.changes.map((change, cIdx) => {

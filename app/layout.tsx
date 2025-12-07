@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import AnnouncementBar from "@/app/page/anouncements/AnnouncementBar";
 // import AnnouncementBar2 from "@/app/page/anouncements/bar2/page";
 import Steper from "@/app/page/steper/Onboarding";
@@ -21,7 +22,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "IKTIAR RAMADANI",
-  description: "Self made with premium code",
+  description: "Selamat datang sobat semuanya, terima kasih telah mendukung kami semua. Kami akan terus meningkatkan sistem kami agar lebih mudah digunakan.",
   icons: {
     icon: "/app/favicon.ico",
   },
@@ -44,11 +45,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <AnnouncementBar />
+          {/* <AnnouncementBar2 /> */}
           <BackToTop />
           <ScrollProgress />
           <CustomCursor />
-          <AnnouncementBar />
-          {/* <AnnouncementBar2 /> */}
           <Steper />
           
         </ThemeProvider>

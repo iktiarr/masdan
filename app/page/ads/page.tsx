@@ -1,51 +1,33 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import { createClient } from "contentful";
-import { Loader2 } from "lucide-react";
-import BannerCarousel from "@/app/components/BannerCarousel";
+import BannerCarousel from "@/app/components/BannerCarousel"; 
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",       
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || "", 
 });
 
-export default function AdsPage() {
-  const [banners, setBanners] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+export default async function AdsSection() {
+  
+  let adsItems = [];
+  try {
+    const adsRes = await client.getEntries({ 
+      content_type: 'iklan', 
+      order: ['fields.order'], 
+    });
+    adsItems = adsRes.items;
+  } catch (error) {
+    console.error("Gagal load iklan:", error);
+  }
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await client.getEntries({ 
-          content_type: 'iklan',
-          order: ['fields.order'],
-        });
-        setBanners(res.items);
-      } catch (error) {
-        console.error("Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+  if (adsItems.length === 0) return null;
 
   return (
-    // Background diset explisit: Putih (Light) & Hitam (Dark)
-    <main className="w-full bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
-       <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8">
-          
-          {loading ? (
-             <div className="flex justify-center items-center h-[200px]">
-                <Loader2 className="animate-spin text-gray-400 dark:text-lime-500" size={32} />
-             </div>
-          ) : (
-             // Panggil Carousel
-             <BannerCarousel items={banners} />
-          )}
-
+    // Padding kecil saja (py-4) agar tidak terlalu jauh jaraknya
+    <section className="w-full bg-white">
+       <div className="max-w-7xl mx-auto">
+          {/* Tidak perlu judul "Highlight", langsung banner saja seperti Tokopedia/Shopee */}
+          <BannerCarousel items={adsItems} />
        </div>
-    </main>
+    </section>
   );
 }

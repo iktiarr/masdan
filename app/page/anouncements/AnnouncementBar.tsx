@@ -42,7 +42,7 @@ export default function AnnouncementBar() {
               
               {/* Content Link */}
               <Link 
-                href="/more/blog" 
+                href="/more/releases" 
                 onClick={handleClose}
                 className="flex items-center gap-2 md:gap-3 text-[10px] md:text-xs font-bold tracking-wide group hover:opacity-90 transition-opacity cursor-pointer w-full justify-center"
               >
@@ -52,7 +52,7 @@ export default function AnnouncementBar() {
                 </div>
                 
                 <span className="truncate max-w-[200px] md:max-w-none">
-                  Fitur Blog kini sudah tersedia!
+                  Perbaikan bug dan lainnya
                 </span>
 
                 <span className="hidden md:flex items-center gap-1 group-hover:underline decoration-white/50 underline-offset-4">
