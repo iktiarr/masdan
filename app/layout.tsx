@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 import AnnouncementBar from "@/app/page/anouncements/AnnouncementBar";
 // import AnnouncementBar2 from "@/app/page/anouncements/bar2/page";
@@ -45,6 +46,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics/>
           <AnnouncementBar />
           {/* <AnnouncementBar2 /> */}
           <BackToTop />
