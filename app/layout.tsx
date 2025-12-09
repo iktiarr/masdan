@@ -46,15 +46,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <Analytics/>
           <AnnouncementBar />
           {/* <AnnouncementBar2 /> */}
           <BackToTop />
           <ScrollProgress />
           <CustomCursor />
           <Steper />
-          
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
