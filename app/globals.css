@@ -170,3 +170,16 @@
 .animate-pulse-fast {
   animation: pulse-fast 4s infinite;
 }
+
+@keyframes shineProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-shineProgress {
+  animation: shineProgress 1.5s linear infinite;
+}

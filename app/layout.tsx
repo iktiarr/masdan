@@ -10,8 +10,9 @@ import AnnouncementBar from "@/app/page/anouncements/AnnouncementBar";
 import Steper from "@/app/page/steper/Onboarding";
 import ScrollProgress from "@/app/components/ScrollProgress";
 import CustomCursor from "@/app/components/CustomCursor";
-import BackToTop from "@/app/components/BackToTop";
+// import BackToTop from "@/app/components/BackToTop";
 import { ThemeProvider } from "@/components/theme-provider";
+import MaintenanceNotification from '@/app/components/MaintenanceNotification';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,12 +52,13 @@ export default function RootLayout({
           <Analytics/>
           <SpeedInsights/>
           
+          <MaintenanceNotification />
+          <Steper />
           <AnnouncementBar />
           {/* <AnnouncementBar2 /> */}
-          <BackToTop />
+          {/* <BackToTop /> */}
           <ScrollProgress />
           <CustomCursor />
-          <Steper />
           
         </ThemeProvider>
       </body>

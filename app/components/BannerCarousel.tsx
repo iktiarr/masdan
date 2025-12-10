@@ -109,7 +109,6 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
           </motion.div>
         </AnimatePresence>
 
-        {/* DOTS (tanpa background hitam) */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {slides.map((_, idx) => (
             <button
@@ -127,7 +126,6 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
           ))}
         </div>
 
-        {/* NAV (tanpa background hitam, hanya putih transparan lembut) */}
         <button
           onClick={prevSlide}
           className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 

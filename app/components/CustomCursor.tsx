@@ -28,7 +28,6 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* SOFT GLOW (layer besar, lembut, premium) */}
       <motion.div
         className="fixed top-0 left-0 w-[380px] h-[380px] rounded-full pointer-events-none z-0 hidden md:block blur-3xl opacity-60"
         style={{
@@ -42,7 +41,6 @@ export default function CustomCursor() {
         }}
       />
 
-      {/* CORE LIGHT (cahaya bulat kecil di tengah pointer) */}
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-10 hidden md:block mix-blend-screen"
         style={{

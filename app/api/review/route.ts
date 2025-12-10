@@ -5,33 +5,33 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, rating, message, job } = body;
 
-    // --- DEBUG: Cek Data Masuk ---
     console.log("1. Data diterima di Server:", { name, rating });
 
-    // 1. Ambil Token
     const BOT_TOKEN = process.env.TELEGRAM_RATING_BOT_TOKEN;
     const CHAT_ID = process.env.TELEGRAM_RATING_CHAT_ID;
 
-    // --- DEBUG: Cek Token ---
     if (!BOT_TOKEN || !CHAT_ID) {
-      console.error("❌ ERROR: Token Telegram Belum Diisi di .env.local");
+      console.error("❌ ERROR: Token Telegram Salah");
       return NextResponse.json({ error: "Konfigurasi Server Telegram Belum Lengkap" }, { status: 500 });
     }
 
-    // 2. Format Pesan
-    const stars = "⭐".repeat(rating || 5);
-    const text = `
-🌟 *REVIEW BARU MASUK!*
-----------------------------
-👤 *Nama:* ${name}
-💼 *Pekerjaan:* ${job || "Pengunjung"}
-🏆 *Rating:* ${rating}/5 ${stars}
-----------------------------
-💬 *Pesan:*
-"${message}"
+const stars = "⭐".repeat(rating || 5);
+
+const text = `
+✨ REVIEW BARU DITERIMA ✨
+
+━━━━━━━━━━━━━━━━━━━━━━
+👤 *Nama*        : ${name}
+💼 *Pekerjaan*   : ${job || "Pengunjung"}
+🏆 *Rating*      : ${rating}/5 (${stars})
+━━━━━━━━━━━━━━━━━━━━━━
+
+💬 *Komentar*:
+${message}
+
+Terima kasih atas review yang diberikan!
 `;
 
-    // 3. Kirim ke Telegram
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     
     const telegramRes = await fetch(url, {
