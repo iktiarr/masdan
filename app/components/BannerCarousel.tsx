@@ -3,15 +3,23 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
+type BannerItem = {
+  id: string;
+  url: string;
+  type: string;
+  link?: string;
+};
 
 export default function BannerCarousel({ items = [] }: { items: any[] }) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  if (!items || !Array.isArray(items) || items.length === 0) return null;
+  if (!Array.isArray(items) || items.length === 0) return null;
 
-  const slides = items.flatMap((item) => {
+  const slides: BannerItem[] = items.flatMap((item) => {
     const mediaList = item.fields?.iklan || [];
     const link = item.fields?.url || "";
 
@@ -19,11 +27,12 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
       .map((media: any) => {
         const fileUrl = media.fields?.file?.url;
         if (!fileUrl) return null;
+
         return {
           id: media.sys.id,
-          link,
           url: "https:" + fileUrl,
           type: media.fields?.file?.contentType || "image/jpeg",
+          link,
         };
       })
       .filter(Boolean);
@@ -31,9 +40,8 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
 
   if (slides.length === 0) return null;
 
-  // Autoplay yang smooth (tanpa bentrok dengan drag)
   useEffect(() => {
-    const timer = setTimeout(() => nextSlide(), 4500);
+    const timer = setTimeout(() => paginate(1), 4500);
     return () => clearTimeout(timer);
   }, [index]);
 
@@ -42,13 +50,39 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
     setIndex((prev) => (prev + dir + slides.length) % slides.length);
   };
 
-  const nextSlide = () => paginate(1);
-  const prevSlide = () => paginate(-1);
+  const current = slides[index];
 
-  // VARIANTS BARU (lebih smooth, tidak jitter)
+  const isInternalLink = (url?: string) => {
+    if (!url) return false;
+    return url.startsWith("/") || url.includes("masdan.vercel.app");
+  };
+
+  const resolveInternalHref = (url: string) => {
+    if (url.startsWith("/")) return url;
+    return url.replace("https://masdan.vercel.app", "");
+  };
+
+  const Wrapper = ({ children }: { children: React.ReactNode }) => {
+    if (!current.link) return <>{children}</>;
+
+    if (isInternalLink(current.link)) {
+      return (
+        <Link href={resolveInternalHref(current.link)}>
+          {children}
+        </Link>
+      );
+    }
+
+    return (
+      <a href={current.link} rel="noopener noreferrer">
+        {children}
+      </a>
+    );
+  };
+
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? "100vw" : "-100vw",
+      x: direction > 0 ? "100%" : "-100%",
       opacity: 1,
     }),
     center: {
@@ -57,25 +91,21 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
       zIndex: 1,
     },
     exit: (direction: number) => ({
-      x: direction < 0 ? "100vw" : "-100vw",
+      x: direction < 0 ? "100%" : "-100%",
       opacity: 1,
       zIndex: 0,
     }),
   };
 
-  const current = slides[index];
-  const Wrapper = current.link ? "a" : "div";
-  const props = current.link ? { href: current.link, target: "_blank" } : {};
-
   return (
-    <div className="relative  group">
+    <div className="relative group w-full">
       <div
-        className="relative overflow-hidden shadow"
-        style={{ aspectRatio: "3/1" }}
+        className="relative overflow-hidden rounded-xl shadow"
+        style={{ aspectRatio: "3 / 1" }}
       >
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
-            key={index}
+            key={current.id}
             custom={direction}
             variants={variants}
             initial="enter"
@@ -84,9 +114,9 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
             transition={{
               x: { type: "tween", duration: 0.55, ease: "easeInOut" },
             }}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0"
           >
-            <Wrapper {...props} className="block w-full h-full relative">
+            <Wrapper>
               {current.type.startsWith("video") ? (
                 <video
                   src={current.url}
@@ -109,6 +139,7 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
           </motion.div>
         </AnimatePresence>
 
+        {/* DOTS */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {slides.map((_, idx) => (
             <button
@@ -126,8 +157,9 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
           ))}
         </div>
 
+        {/* NAV */}
         <button
-          onClick={prevSlide}
+          onClick={() => paginate(-1)}
           className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 
           p-2 rounded-full bg-white/60 hover:bg-white shadow transition"
         >
@@ -135,7 +167,7 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
         </button>
 
         <button
-          onClick={nextSlide}
+          onClick={() => paginate(1)}
           className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 
           p-2 rounded-full bg-white/60 hover:bg-white shadow transition"
         >
