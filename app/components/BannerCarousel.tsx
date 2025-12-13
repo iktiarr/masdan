@@ -138,41 +138,6 @@ export default function BannerCarousel({ items = [] }: { items: any[] }) {
             </Wrapper>
           </motion.div>
         </AnimatePresence>
-
-        {/* DOTS */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                setDirection(idx > index ? 1 : -1);
-                setIndex(idx);
-              }}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                idx === index
-                  ? "w-6 bg-white"
-                  : "w-2 bg-white/60 hover:bg-white"
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* NAV */}
-        <button
-          onClick={() => paginate(-1)}
-          className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 
-          p-2 rounded-full bg-white/60 hover:bg-white shadow transition"
-        >
-          <ChevronLeft size={20} />
-        </button>
-
-        <button
-          onClick={() => paginate(1)}
-          className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 
-          p-2 rounded-full bg-white/60 hover:bg-white shadow transition"
-        >
-          <ChevronRight size={20} />
-        </button>
       </div>
     </div>
   );

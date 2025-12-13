@@ -22,7 +22,7 @@ export default async function AdsSection() {
   if (adsItems.length === 0) return null;
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white dark:bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         <BannerCarousel items={adsItems} />
       </div>
