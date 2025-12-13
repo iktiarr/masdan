@@ -1,4 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+
+
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
 module.exports = {
   darkMode: ["class"],
   
@@ -28,5 +34,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    addVariablesForColors,
   ],
 };
+

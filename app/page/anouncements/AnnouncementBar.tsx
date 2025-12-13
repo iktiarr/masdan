@@ -23,7 +23,7 @@ export default function AnnouncementBar() {
       const timer = setTimeout(() => {
         setIsVisible(false);
         localStorage.setItem("announcement_closed", "true");
-      }, 10000);
+      }, 30000);
       return () => clearTimeout(timer);
     } else {
       setIsVisible(false);
@@ -40,7 +40,7 @@ export default function AnnouncementBar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ duration: 0.45, ease: "easeInOut" }}
-          className="fixed top-0 left-0 w-full z-[100] isolate"
+          className="fixed top-15 left-0 w-full z-[100] isolate"
         >
           <div className="relative bg-linear-to-r from-lime-600 via-emerald-600 to-green-700 text-white shadow-lg overflow-hidden">
             <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
@@ -54,11 +54,11 @@ export default function AnnouncementBar() {
               >
                 <div className="flex items-center gap-1.5 bg-white/25 px-2 py-0.5 rounded-full border border-white/20 backdrop-blur-sm">
                   <Sparkles size={12} className="text-yellow-300 animate-pulse" />
-                  <span className="uppercase text-[9px]">Update</span>
+                  <span className="uppercase text-[9px]">Blog</span>
                 </div>
 
                 <span className="truncate max-w-[200px] md:max-w-none">
-                  Perbaikan bug dan lainnya
+                  Lihat semua cerita seru disini
                 </span>
 
                 <span className="hidden md:flex items-center gap-1 group-hover:underline underline-offset-4">

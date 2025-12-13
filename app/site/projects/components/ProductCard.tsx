@@ -1,7 +1,7 @@
 "use client";
 
 import { ShoppingCart, ExternalLink, Calendar, Info, Layout, Tag, Award, Layers } from "lucide-react";
-import { motion } from "framer-motion";
+
 
 const getTagStyle = (text: string) => {
   if (!text) return "bg-gray-200 text-gray-700 border-gray-300";
@@ -62,7 +62,7 @@ export default function ProductCard({ item, index = 0 }: { item: any; index?: nu
     <article
       aria-labelledby={titleId}
       role="article"
-      className="group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full border border-white/10 bg-white dark:bg-[#071013]"
+      className="group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full border border-white/10 bg-white dark:bg-[#040a0c57]"
     >
       <div className="relative w-full h-36 bg-black/5 overflow-hidden shrink-0">
         {imageUrl ? (
@@ -111,23 +111,23 @@ export default function ProductCard({ item, index = 0 }: { item: any; index?: nu
           )}
         </div>
 
-        <h3 id={titleId} className="text-slate-900 font-bold text-base leading-tight mb-2 line-clamp-1 group-hover:text-blue-700 transition-colors">
+        <h3 id={titleId} className="text-slate-900 font-bold text-base leading-tight mb-2 line-clamp-1 dark:text-lime-400 group-hover:text-blue-700 transition-colors">
           {name}
         </h3>
 
-        <p className="text-slate-600 text-xs leading-relaxed line-clamp-2 mb-3 border-l-2 border-slate-400/30 pl-2">
+        <p className="text-slate-600 text-xs leading-relaxed line-clamp-2 mb-3 border-l-2 dark:text-stone-50 border-slate-400/30 pl-2">
           {description ?? "Tidak ada deskripsi."}
         </p>
 
         <div className="mt-auto space-y-2">
-          <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-mono">
+          <div className="flex items-center gap-1.5 text-[10px] text-slate-500 dark:text-stone-50 font-mono">
             <Calendar size={10} aria-hidden /> <span>{displayDate}</span>
           </div>
 
           {note && (
-            <div className="flex gap-1.5 items-start p-1.5 rounded bg-white/40 border border-white/50">
+            <div className="flex gap-1.5 items-start p-1.5 rounded bg-white border border-white/50">
               <Info size={12} className="text-slate-600 mt-0.5 shrink-0" aria-hidden />
-              <p className="text-[10px] text-slate-700 leading-tight italic">{note}</p>
+              <p className="text-[10px] text-slate-700 dark:text-black leading-tight italic">{note}</p>
             </div>
           )}
         </div>
@@ -136,11 +136,11 @@ export default function ProductCard({ item, index = 0 }: { item: any; index?: nu
           <div className="flex items-end justify-between">
             <div className="flex flex-col">
               {hasDiscount && (
-                <span className="text-[11px] text-slate-500 line-through decoration-red-500 decoration-1 font-medium">
+                <span className="text-[15px] text-slate-500 line-through dark:text-stone-50 decoration-red-600 decoration-2 font-medium">
                   {formatRupiah(diskon)}
                 </span>
               )}
-              <span className={`text-base font-extrabold ${isFree ? "text-emerald-600" : "text-slate-900"}`}>
+              <span className={`text-base font-extrabold dark:text-lime-400 ${isFree ? "text-emerald-600" : "text-slate-900"}`}>
                 {isFree ? "Gratis" : formatRupiah(harga)}
               </span>
             </div>
@@ -174,7 +174,7 @@ export default function ProductCard({ item, index = 0 }: { item: any; index?: nu
               aria-label={isFree ? `Klaim ${name}` : `Beli ${name}`}
               className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 hover:bg-black text-white font-bold text-[10px] transition-all active:scale-95 shadow-md"
             >
-              <ShoppingCart size={12} className="text-emerald-400" aria-hidden /> {isFree ? "Klaim" : "Beli"}
+              <ShoppingCart size={12} className="text-lime-400" aria-hidden /> {isFree ? "Klaim" : "Beli"}
             </button>
           </div>
         </div>

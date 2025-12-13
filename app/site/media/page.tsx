@@ -39,7 +39,7 @@ const SOCIALS: Social[] = [
     link: "https://www.youtube.com/@iktiarramadani",
     icon: Youtube,
     gradient: "from-red-500 to-orange-500",
-    desc: "Tutorial & Edukasi"
+    desc: "Tutorial & Education"
   },
   {
     name: "TikTok",
@@ -50,7 +50,7 @@ const SOCIALS: Social[] = [
         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
       </svg>
     ),
-    gradient: "from-black to-gray-800",
+    gradient: "from-stone-950 to-teal-500",
     desc: "Shorts & Fun"
   },
   {
@@ -249,7 +249,7 @@ export default function MediaPage() {
               <button
                 type="button"
                 onClick={handleWA}
-                className="flex-1 flex items-center justify-center gap-2 bg-gray-900 dark:bg-lime-500 hover:bg-black dark:hover:bg-lime-400 text-white dark:text-black font-bold py-3.5 px-6 rounded-xl transition-transform active:scale-95 shadow-lg"
+                className="flex-1 flex items-center justify-center gap-2 bg-lime-500 dark:bg-lime-500 hover:bg-black dark:hover:bg-lime-400 text-white dark:text-black font-bold py-3.5 px-6 rounded-xl transition-transform active:scale-95 shadow-lg"
                 aria-label="Hubungi via WhatsApp"
               >
                 <MessageCircle size={18} aria-hidden /> WhatsApp

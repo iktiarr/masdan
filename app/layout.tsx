@@ -7,12 +7,12 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import AnnouncementBar from "@/app/page/anouncements/AnnouncementBar";
 // import AnnouncementBar2 from "@/app/page/anouncements/bar2/page";
-import Steper from "@/app/page/steper/Onboarding";
+// import Steper from "@/app/page/steper/Onboarding";
 import ScrollProgress from "@/app/components/ScrollProgress";
-import CustomCursor from "@/app/components/CustomCursor";
+// import CustomCursor from "@/app/components/CustomCursor";
 // import BackToTop from "@/app/components/BackToTop";
 import { ThemeProvider } from "@/components/theme-provider";
-import MaintenanceNotification from '@/app/components/MaintenanceNotification';
+// import MaintenanceNotification from '@/app/components/MaintenanceNotification';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,11 +24,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport = {
+  scrollRestoration: "auto",
+};
+
 export const metadata: Metadata = {
   title: "IKTIAR RAMADANI",
   description: "Selamat datang sobat semuanya, terima kasih telah mendukung kami semua. Kami akan terus meningkatkan sistem kami agar lebih mudah digunakan.",
   icons: {
-    icon: "/app/favicon.ico",
+    icon: "/favicon.ico",
   },
   verification: {
     google: 'GrgnqlATFXKcX3K3SCDhYsjH8py0OKsT0ioiKKsmd2g',
@@ -55,13 +59,13 @@ export default function RootLayout({
           <Analytics/>
           <SpeedInsights/>
           
-          <MaintenanceNotification />
-          <Steper />
+          {/* <MaintenanceNotification /> */}
+          {/* <Steper /> */}
           <AnnouncementBar />
           {/* <AnnouncementBar2 /> */}
           {/* <BackToTop /> */}
           <ScrollProgress />
-          <CustomCursor />
+          {/* <CustomCursor /> */}
           
         </ThemeProvider>
       </body>

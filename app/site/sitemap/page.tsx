@@ -59,7 +59,7 @@ export default function ExplorePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           <div className="lg:col-span-1 space-y-2 lg:sticky lg:top-32">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 px-2">
+            <h3 className="text-xs font-bold text-gray-900 dark:text-gray-50 uppercase tracking-wider mb-4 px-2">
               Kategori Menu
             </h3>
 
@@ -73,7 +73,7 @@ export default function ExplorePage() {
                   className={`w-full flex items-center justify-between p-3 rounded-xl transition-all relative overflow-hidden ${
                     active
                       ? "bg-lime-500 text-black shadow-lg shadow-lime-500/20 font-bold"
-                      : "bg-white dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/10 border border-gray-100 dark:border-white/5"
+                      : "bg-white dark:bg-white/5 text-gray-600 dark:text-gray-50 hover:bg-gray-50 dark:hover:bg-white/10 border border-gray-100 dark:border-white/5"
                   }`}
                 >
                   <div className="flex items-center gap-3 relative z-10">
@@ -127,7 +127,7 @@ export default function ExplorePage() {
                     >
                       <Link
                         href={item.href}
-                        className="group flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 hover:border-lime-400 dark:hover:border-lime-500/50 shadow-sm hover:shadow-xl hover:shadow-lime-500/10 transition-all duration-300 relative overflow-hidden h-full"
+                        className="group flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-stone-200 border border-gray-200 dark:border-white/5 hover:border-lime-400 dark:hover:border-lime-500/50 shadow-sm hover:shadow-xl hover:shadow-lime-500/10 transition-all duration-300 relative overflow-hidden h-full"
                       >
                         <div className="w-12 h-12 shrink-0 rounded-xl bg-gray-50 dark:bg-white/5 flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:bg-lime-500 group-hover:text-white transition-all shadow-inner">
                           <ItemIcon size={22} strokeWidth={1.5} />
@@ -135,7 +135,7 @@ export default function ExplorePage() {
 
                         <div className="flex-1 min-w-0">
                           <div className="flex justify-between items-center mb-1">
-                            <h3 className="font-bold text-gray-800 dark:text-gray-200 text-sm group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors truncate">
+                            <h3 className="font-bold text-gray-800 dark:text-lime-600 text-sm group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors truncate">
                               {item.label}
                             </h3>
 

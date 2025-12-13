@@ -116,10 +116,10 @@ export default function SkillsPage() {
                     <Icon size={24} />
                   </div>
                   <div>
-                    <h3 id={`skill-${key}`} className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <h3 id={`skill-${key}`} className="text-2xl font-bold text-lime-500 dark:text-white">
                       {section.title}
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm max-w-lg">
+                    <p className="text-gray-500 dark:text-lime-400 text-sm max-w-lg">
                       {section.desc}
                     </p>
                   </div>
@@ -127,7 +127,7 @@ export default function SkillsPage() {
               </header>
 
               <ul
-                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-12"
+                className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-12"
                 role="list"
               >
                 {items.map((item, idx) => (

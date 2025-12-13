@@ -20,9 +20,6 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-start">
           <div className="text-center md:text-left space-y-4">
             <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-              <div className="p-2 bg-lime-100 dark:bg-lime-900/30 rounded-lg text-lime-600 dark:text-lime-400">
-                <Leaf size={24} aria-hidden />
-              </div>
               <h3 className="text-3xl font-extrabold tracking-tighter text-gray-900 dark:text-white">
                 M A S D A N
               </h3>

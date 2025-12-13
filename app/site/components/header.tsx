@@ -156,9 +156,9 @@ export default function Header() {
             </SheetTrigger>
 
             <SheetContent
-              side="right"
-              className="w-[300px] bg-white dark:bg-[#0a0a0a] border-l border-gray-200 dark:border-white/10 overflow-y-auto p-0 flex flex-col h-full"
-            >
+            side="right"
+            className="w-[300px] bg-white dark:bg-[#0a0a0a] border-l border-gray-200 dark:border-white/10 overflow-y-auto p-0 flex flex-col h-full [&_button[aria-label='Close']]:hidden"
+          >
               <div className="p-5 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur border-b border-gray-100 dark:border-white/10">
                 <span className="font-bold text-lg text-gray-900 dark:text-white">Menu Utama</span>
               </div>

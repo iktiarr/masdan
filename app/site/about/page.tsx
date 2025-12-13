@@ -59,7 +59,7 @@ export default function AboutSection() {
               alt="Foto profil Iktiar Ramadani"
               fill
               loading="lazy"
-              className="object-cover grayscale transition-transform duration-700 hover:scale-110 hover:grayscale-0"
+              className="object-cover"
             />
 
             <div
@@ -68,7 +68,7 @@ export default function AboutSection() {
             />
 
             <figcaption className="absolute bottom-0 left-0 w-full p-8">
-              <div className="h-8 mb-1 overflow-hidden relative">
+              <div className="relative h-15 mb-1 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.h3
                     key={nicknames[nickIndex]}
@@ -76,23 +76,11 @@ export default function AboutSection() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.45 }}
-                    className="text-2xl font-bold text-white absolute top-0 left-0"
+                    className="text-2xl font-bold text-white absolute top-3 left-0"
                   >
                     {nicknames[nickIndex]}
                   </motion.h3>
                 </AnimatePresence>
-              </div>
-
-              <div className="flex items-center gap-3 mt-4">
-                <div className="px-3 py-1 rounded-full bg-lime-500/20 border border-lime-500/30 backdrop-blur-md flex items-center gap-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-500" />
-                  </span>
-                  <span className="text-[10px] font-bold text-lime-400 uppercase tracking-wider">
-                    Siap 24 Jam
-                  </span>
-                </div>
               </div>
             </figcaption>
           </motion.figure>
@@ -113,15 +101,15 @@ export default function AboutSection() {
               <div>
                 <h3 className="text-2xl md:text-4xl font-black text-gray-900 dark:text-white leading-snug">
                   Saya percaya bahwa karya memberikan{" "}
-                  <span className="italic font-serif font-normal text-gray-400 dark:text-gray-500">
+                  <span className="italic font-serif font-normal text-gray-400 dark:text-gray-100">
                     kehidupan
                   </span>{" "}
                   yang sangat{" "}
-                  <span className="text-lime-600 dark:text-lime-400 bg-lime-50 dark:bg-lime-500/10 px-2 rounded-lg">
+                  <span className="text-lime-100 dark:text-lime-500 bg-lime-500 dark:bg-lime-100 px-2 rounded-lg">
                     bermanfaat.
                   </span>
                 </h3>
-                <div className="w-20 h-1.5 bg-gray-900 dark:bg-white mt-6 rounded-full" />
+                <div className="w-20 h-1.5 bg-lime-500 dark:bg-white mt-6 rounded-full" />
               </div>
 
               <div className="space-y-4 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed font-medium">
@@ -172,13 +160,9 @@ export default function AboutSection() {
 
             <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
               <div className="w-full md:w-1/3 space-y-4">
-                <div className="flex items-center gap-2 text-lime-400 font-bold uppercase tracking-widest text-xs">
-                  <Aperture size={16} /> Kehidupan & Kreativitas
-                </div>
-
                 <h3 className="text-3xl font-bold leading-tight">
                   Di Balik Layar <br />
-                  <span className="text-gray-400">ide dan logika.</span>
+                  <span className="text-lime-400">ide dan logika.</span>
                 </h3>
 
                 <p className="text-gray-400 text-sm leading-relaxed">

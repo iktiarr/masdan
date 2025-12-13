@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react"; // Tambahkan useEffect
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
@@ -41,6 +41,19 @@ export default function ProductOverlay({
   const [selectedJenis, setSelectedJenis] = useState("Semua");
   const [sortOrder, setSortOrder] = useState("terbaru");
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+
+  // --- PERBAIKAN 1: Kunci scroll body saat overlay terbuka ---
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      // Opsional: tambahkan padding-right jika ada layout shift karena scrollbar hilang
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const uniqueData = useMemo(() => {
     if (!Array.isArray(products) || products.length === 0) {
@@ -174,7 +187,11 @@ export default function ProductOverlay({
           animate={{ y: 0 }}
           exit={{ y: "100%" }}
           transition={{ type: "spring", damping: 30, stiffness: 300 }}
-          className="fixed inset-0 bg-gray-50 dark:bg-[#0a0a0a] z-[9999] flex flex-col overflow-hidden text-gray-900 dark:text-white transition-colors duration-300"
+          // --- PERBAIKAN 2: Class CSS untuk Full Screen & No Bounce ---
+          // h-[100dvh] -> Dynamic Viewport Height (menangani mobile browser bar)
+          // overscroll-none -> Mencegah efek pantul (bounce) yang memperlihatkan background
+          // w-screen -> Memastikan lebar penuh
+          className="fixed inset-0 h-[100dvh] w-screen bg-gray-50 dark:bg-[#0a0a0a] z-[9999] flex flex-col overflow-hidden text-gray-900 dark:text-white transition-colors duration-300 overscroll-none"
           aria-modal="true"
           role="dialog"
           aria-label="Overlay produk"
@@ -358,12 +375,6 @@ export default function ProductOverlay({
 
           <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#0a0a0a] p-4 md:p-6 custom-scrollbar transition-colors duration-300" aria-live="polite">
             <div className="max-w-[1600px] mx-auto pb-20">
-              <div className="mb-5 px-1 flex justify-between items-center">
-                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  Menampilkan{" "}
-                  <span className="text-gray-900 dark:text-white ml-1">{filteredProducts.length}</span> Produk
-                </p>
-              </div>
 
               {filteredProducts.length > 0 ? (
                 <section role="list" aria-label="Daftar produk">
@@ -378,10 +389,7 @@ export default function ProductOverlay({
               ) : (
                 <div className="flex flex-col items-center justify-center py-32 text-gray-400 dark:text-gray-600 border-2 border-dashed border-gray-200 dark:border-white/10 rounded-2xl bg-white dark:bg-white/5 transition-colors">
                   <PackageX size={48} className="mb-4 opacity-20" />
-                  <p className="text-sm font-medium mb-1">Tidak ada produk ditemukan.</p>
-                  <button onClick={handleReset} type="button" className="mt-2 text-xs font-bold text-lime-600 dark:text-lime-400 hover:underline">
-                    Reset Filter
-                  </button>
+                  <p className="text-sm font-medium mb-1">Produk tidak ditemukan saat ini</p>
                 </div>
               )}
             </div>

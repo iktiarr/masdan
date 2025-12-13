@@ -115,7 +115,7 @@ export default function ProjectsSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-6">
             <button
               onClick={() => setIsProductOpen(true)}
-              className="w-full sm:w-auto px-8 py-4 bg-gray-900 dark:bg-lime-500 hover:bg-lime-600 dark:hover:bg-lime-400 text-white dark:text-black font-bold rounded-xl flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1"
+              className="w-full sm:w-auto px-8 py-4 bg-lime-400 dark:bg-lime-500 hover:bg-lime-600 dark:hover:bg-lime-400 text-black dark:text-black font-bold rounded-xl flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1"
               aria-label="Lihat semua produk"
             >
               {loading ? (
@@ -129,7 +129,7 @@ export default function ProjectsSection() {
 
             <button
               onClick={() => setIsTutorialOpen(true)}
-              className="w-full sm:w-auto px-8 py-4 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold rounded-xl border border-gray-200 dark:border-white/10 flex items-center justify-center gap-2 transition-all"
+              className="w-full sm:w-auto px-8 py-4 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-lime-500 dark:text-lime-500 font-semibold rounded-xl border border-gray-200 dark:border-white/10 flex items-center justify-center gap-2 transition-all"
               aria-label="Buka panduan cara membeli"
             >
               <PlayCircle size={18} /> Panduan Cara Membeli?
