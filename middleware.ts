@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
+  console.log("MAINTENANCE VAR:", process.env.MAINTENANCE_MODE);
   // 1. Cek status Maintenance dari file .env
-  const isMaintenanceMode = process.env.MAINTENANCE_MODE === 'true';
+  // Ubah baris ini agar lebih aman (menghapus spasi dan lowercase)
+  const isMaintenanceMode = process.env.MAINTENANCE_MODE?.toLowerCase().trim() === 'true'; 
 
   // 2. Tentukan halaman maintenance kamu ada di mana
   const maintenancePage = '/page/maintenance'; // Atau '/maintenance' sesuai file yang kamu buat tadi
