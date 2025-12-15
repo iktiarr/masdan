@@ -5,8 +5,10 @@ import Hero from "./site/hero";
 import AdsSection from "./page/ads/page"; 
 
 import About from "./site/about/page";
+import Edu from "./site/education/page";
 import Skills from "./site/skills/page";
 import Projects from "./site/projects/page";
+import Certificates from "./site/sertificate/page";
 import Media from "./site/media/page";
 import Other from "./site/sitemap/page";
 
@@ -23,8 +25,10 @@ export default function Home() {
       <AdsSection />
       
       <About />
+      <Edu />
       <Skills />
       <Projects />
+      <Certificates />
       <Media />
       <Other />
 
