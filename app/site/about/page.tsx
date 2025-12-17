@@ -60,6 +60,7 @@ export default function AboutSection() {
               fill
               loading="lazy"
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
             <div
@@ -100,16 +101,11 @@ export default function AboutSection() {
             <div className="relative z-10 space-y-8">
               <div>
                 <h3 className="text-2xl md:text-4xl font-black text-gray-900 dark:text-white leading-snug">
-                  Saya percaya bahwa karya memberikan{" "}
-                  <span className="italic font-serif font-normal text-gray-400 dark:text-gray-100">
-                    kehidupan
-                  </span>{" "}
-                  yang sangat{" "}
+                  Saya percaya bahwa karya memberikan banyak{" "}
                   <span className="text-lime-100 dark:text-lime-500 bg-lime-500 dark:bg-lime-100 px-2 rounded-lg">
-                    bermanfaat.
+                    manfaat.
                   </span>
                 </h3>
-                <div className="w-20 h-1.5 bg-lime-500 dark:bg-white mt-6 rounded-full" />
               </div>
 
               <div className="space-y-4 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed font-medium">
@@ -129,10 +125,6 @@ export default function AboutSection() {
                     memecahkan hal yang tampak tidak masuk akal
                   </strong>
                   . Fokus utama saya adalah belajar apapun yang membawa nilai.
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-500 italic pt-2">
-                  "Barang siapa yang bersungguh-sungguh, maka dia akan
-                  mendapatkan kesuksesan."
                 </p>
               </div>
             </div>

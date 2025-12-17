@@ -9,6 +9,7 @@ import AnnouncementBar from "@/app/page/anouncements/AnnouncementBar";
 // import AnnouncementBar2 from "@/app/page/anouncements/bar2/page";
 // import Steper from "@/app/page/steper/Onboarding";
 import ScrollProgress from "@/app/components/ScrollProgress";
+import UpdatePopup from "@/app/components/UpdatePopup";
 // import CustomCursor from "@/app/components/CustomCursor";
 // import BackToTop from "@/app/components/BackToTop";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -58,7 +59,8 @@ export default function RootLayout({
           {children}
           <Analytics/>
           <SpeedInsights/>
-          
+
+          <UpdatePopup/>
           {/* <MaintenanceNotification /> */}
           {/* <Steper /> */}
           <AnnouncementBar />

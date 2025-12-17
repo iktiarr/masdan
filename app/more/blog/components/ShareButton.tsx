@@ -7,9 +7,8 @@ export default function ShareButton({ title, text }: { title: string; text?: str
   const [copied, setCopied] = useState(false);
 
   const handleShare = async () => {
-    const url = window.location.href; // Ambil URL halaman saat ini
+    const url = window.location.href;
 
-    // 1. Coba Web Share API (Khusus HP: Android/iOS)
     if (navigator.share) {
       try {
         await navigator.share({
@@ -19,18 +18,14 @@ export default function ShareButton({ title, text }: { title: string; text?: str
         });
         return;
       } catch (err) {
-        // User membatalkan share, tidak perlu error handling khusus
         console.log("Share dibatalkan");
       }
     }
 
-    // 2. Fallback: Copy Link (Untuk Desktop / Browser lama)
     try {
-      // Cara Modern
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(url);
       } else {
-        // Cara Lama (Aman untuk Localhost HTTP)
         const textArea = document.createElement("textarea");
         textArea.value = url;
         textArea.style.position = "fixed";
@@ -42,7 +37,6 @@ export default function ShareButton({ title, text }: { title: string; text?: str
         document.body.removeChild(textArea);
       }
 
-      // Tampilkan feedback "Disalin"
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -61,8 +55,6 @@ export default function ShareButton({ title, text }: { title: string; text?: str
       ) : (
         <Share2 size={18} />
       )}
-
-      {/* Tooltip Feedback */}
       {copied && (
         <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-black/90 text-white text-[10px] font-bold px-2 py-1 rounded-lg shadow-lg whitespace-nowrap animate-in fade-in slide-in-from-bottom-1">
           Link Disalin!

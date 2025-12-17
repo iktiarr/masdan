@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
-import { STEPS } from "@/app/information-menu/step";
+import { STEPS } from "@/app/information-menu/data_steper_notifications";
 
 export default function Onboarding() {
   const [isOpen, setIsOpen] = useState(false);

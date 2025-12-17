@@ -163,7 +163,7 @@ export default function CertificatesPage() {
                       className="group flex items-center p-4 bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-white/5 rounded-2xl hover:border-lime-500 transition-all duration-300"
                     >
                       {/* 1. Ikon File (Kiri) */}
-                      <div className="flex-shrink-0 mr-4 p-3 bg-white dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/5">
+                      <div className="shrink-0 mr-4 p-3 bg-white dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/5">
                         {getFileIcon(item.type)}
                       </div>
 
@@ -180,7 +180,7 @@ export default function CertificatesPage() {
                       {/* 3. Tombol Preview (Kanan) */}
                       <button
                         onClick={() => setSelectedItem(item)}
-                        className="flex-shrink-0 p-2.5 rounded-full bg-white dark:bg-white/5 text-gray-400 hover:text-lime-600 hover:bg-lime-100 dark:hover:bg-lime-900/30 transition-all active:scale-95 border border-gray-100 dark:border-white/5"
+                        className="shrink-0 p-2.5 rounded-full bg-white dark:bg-white/5 text-gray-400 hover:text-lime-600 hover:bg-lime-100 dark:hover:bg-lime-900/30 transition-all active:scale-95 border border-gray-100 dark:border-white/5"
                         title="Preview File"
                       >
                         <Eye size={20} />

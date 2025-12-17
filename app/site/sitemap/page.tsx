@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, LayoutGrid, ChevronRight } from "lucide-react";
-import { exploreMenu } from "@/app/information-menu/menudata";
+import { exploreMenu } from "@/app/information-menu/data_menu";
 
 const getBadgeStyle = (text: string) => {
   const t = text?.toLowerCase();

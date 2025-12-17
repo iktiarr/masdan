@@ -10,10 +10,14 @@ import {
   Check,
   MessageCircle,
   AtSign,
+  Coffee,
+  Heart,
+  ExternalLink,
   ArrowUpRight,
   Check as CheckIcon
 } from "lucide-react";
 import AOS from "aos";
+import Link from 'next/link';
 
 type Social = {
   name: string;
@@ -215,21 +219,35 @@ export default function MediaPage() {
               </p>
             </header>
 
-            <div className="relative z-10 mt-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex items-center justify-between gap-4">
+            <div className="relative z-10 mt-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex items-center justify-between gap-4 group hover:border-[#faae2b]/50 transition-all duration-300">
               <div className="min-w-0">
-                <p className="text-[10px] tracking-wider uppercase font-bold text-gray-400 mb-1">{BANK_INFO.bankName}</p>
-                <p className="text-lg md:text-xl font-mono font-bold tracking-wide">{BANK_INFO.accountNumber}</p>
-                <p className="text-xs text-gray-300 mt-1">a.n {BANK_INFO.accountName}</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="text-[10px] tracking-wider uppercase font-bold text-gray-400">
+                    Dukungan
+                  </p>
+                  <span className="px-1.5 py-0.5 rounded-[4px] bg-[#faae2b]/20 text-[#faae2b] text-[8px] font-bold border border-[#faae2b]/30">
+                      SAWERIA
+                  </span>
+                </div>
+                
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg md:text-xl font-bold tracking-wide text-white group-hover:text-[#faae2b] transition-colors">
+                    Traktir Saya Kopi
+                  </h3>
+                  <Coffee size={18} className="text-neutral-500 group-hover:text-[#faae2b] transition-colors mb-1" />
+                </div>
               </div>
 
-              <button
-                type="button"
-                onClick={() => handleCopy(BANK_INFO.accountNumber, "bank")}
-                className="p-3 rounded-xl bg-lime-500 text-black hover:bg-lime-400 transition-transform active:scale-95 shadow-lg"
-                aria-label="Salin nomor rekening"
+              {/* Bagian Kanan: Tombol Aksi */}
+              <Link
+                href="https://saweria.co/iktiar7"
+                target="_blank"
+                className="flex-shrink-0 p-3 rounded-xl bg-[#faae2b] text-black hover:bg-[#e59d20] hover:scale-105 transition-all active:scale-95 shadow-lg shadow-orange-500/10 flex items-center gap-2"
+                aria-label="Buka halaman Saweria"
               >
-                {copiedBank ? <CheckIcon size={20} aria-hidden /> : <Copy size={20} aria-hidden />}
-              </button>
+                <span className="text-xs font-bold hidden sm:block">Dukung</span>
+                <ExternalLink size={20} aria-hidden />
+              </Link>
             </div>
           </article>
 

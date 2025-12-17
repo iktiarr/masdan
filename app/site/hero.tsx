@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Download, MousePointer2, Smartphone, Database, Code2, Terminal } from "lucide-react";
+import { Download, MousePointer2, Smartphone, Database, Code2, ArrowRight,Terminal } from "lucide-react";
 
 export default function HeroSection() {
   const [text, setText] = useState("");
@@ -58,6 +58,8 @@ export default function HeroSection() {
             <img
               src="/hero4.svg"
               alt="Developer illustration"
+              width={500}
+              height={500}
               loading="lazy"
               className="w-full h-auto drop-shadow-xl"
             />
@@ -113,7 +115,7 @@ export default function HeroSection() {
           <h1 id="hero-heading" className="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
             Welcome to <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-lime-500 to-lime-700">
-              Website & Portfolio
+              Personal Digital Ecosystem
             </span>
           </h1>
 
@@ -143,6 +145,39 @@ export default function HeroSection() {
                 Download CV
               </span>
               <div className="absolute inset-0 bg-linear-to-r from-lime-300 to-lime-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+
+            <a
+              href="/welcome"
+              className="group relative w-full sm:w-auto px-8 py-4 rounded-full
+                        font-semibold text-white
+                        bg-linear-to-r from-sky-500 via-purple-300 to-purple-600
+                        shadow-lg shadow-indigo-500/30
+                        transition-all duration-300
+                        hover:-translate-y-1
+                        overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" />
+                Special Page
+              </span>
+
+              <span
+                className="absolute inset-0 rounded-full p-0.5
+                          bg-linear-to-r from-cyan-300 via-purple-300 to-purple-500
+                          opacity-0 group-hover:opacity-100
+                          transition-opacity duration-300"
+              >
+                <span className="block w-full h-full rounded-full
+                                bg-linear-to-r from-sky-600 to-indigo-700" />
+              </span>
+
+              <span
+                className="absolute -inset-1 rounded-full
+                          bg-linear-to-r from-cyan-400 to-purple-500
+                          opacity-0 group-hover:opacity-40 blur-lg
+                          transition-opacity duration-300"
+              />
             </a>
           </div>
         </motion.header>

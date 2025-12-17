@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Send, Loader2, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Send, Loader2, LifeBuoy, Mail, MessageSquare } from "lucide-react";
 import { Toaster, toast } from "sonner"; 
+import confetti from "canvas-confetti"; // Import Confetti
 import AOS from "aos";
+import "aos/dist/aos.css"; // Pastikan CSS AOS diimport jika belum di global
+
+import Navbar from "@/app/asset/navbar_atas";
+import Footer from "@/app/asset/footer_bawah";
+import SimpleHeader from "@/app/asset/navbar_atas"; 
 
 export default function HelpCenter() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
@@ -14,6 +18,27 @@ export default function HelpCenter() {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+
+  // --- LOGIC CONFETTI ---
+  const triggerConfetti = () => {
+    const duration = 3 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+
+    const interval: any = setInterval(function() {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+    }, 250);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,9 +55,12 @@ export default function HelpCenter() {
       const result = await res.json();
 
       if (res.ok) {
+        // SUKSES
+        triggerConfetti(); // 🔥 Efek Confetti
         toast.success("Pesan Terkirim!", {
           id: toastId,
           description: "Kami akan segera membalas melalui Email Anda.",
+          duration: 4000,
         });
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
@@ -52,95 +80,98 @@ export default function HelpCenter() {
   };
 
   return (
-    <main className="relative min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white font-sans transition-colors duration-300 py-24 px-6 flex flex-col items-center justify-center overflow-hidden">
-      <Toaster position="top-center" richColors />
+    <>
+      <Navbar />
 
-      {/* --- BACKGROUND FX --- */}
-      <div className="absolute inset-0 pointer-events-none">
-         <div className="absolute inset-0 bg-[radial-gradient(#84cc16_1px,transparent_1px)] dark:bg-[radial-gradient(#84cc16_1px,transparent_1px)] bg-size-[32px_32px] opacity-10 dark:opacity-5"></div>
-         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-lime-200/40 dark:bg-lime-500/10 rounded-full blur-[150px] opacity-60"></div>
-      </div>
-
-      <div className="relative z-10 w-full max-w-3xl">
+      <main className="relative min-h-screen bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-white font-sans transition-colors duration-300 pt-24 pb-20 px-4 md:px-8 flex flex-col items-center overflow-hidden">
         
-        {/* --- BACK BUTTON --- */}
-        <div className="mb-8 text-center md:text-left">
-          <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-lime-500 dark:hover:border-lime-500 transition-all duration-300 group shadow-sm">
-              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform text-gray-500 dark:text-gray-400 group-hover:text-lime-500" />
-              <span className="text-sm font-bold text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white">Kembali</span>
-          </Link>
+        <SimpleHeader title="Help Center" />
+        <Toaster position="top-center" richColors />
+
+        {/* --- BACKGROUND FX --- */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+           <div className="absolute -top-[20%] -left-[10%] w-[500px] h-[500px] bg-lime-500/5 rounded-full blur-[100px]" />
+           <div className="absolute -bottom-[20%] -right-[10%] w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px]" />
         </div>
 
-        {/* --- HEADER --- */}
-        <div className="text-center mb-12 space-y-4" data-aos="fade-down">
-           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-100 dark:bg-lime-900/20 border border-lime-200 dark:border-lime-500/30">
-              <span className="w-2 h-2 rounded-full bg-lime-500 animate-pulse"></span>
-              <span className="text-[10px] font-bold text-lime-600 dark:text-lime-400 uppercase tracking-widest">Contact Support</span>
-           </div>
-           <h1 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900 dark:text-white">
-             Butuh <span className="text-transparent bg-clip-text bg-linear-to-r from-lime-500 to-emerald-600">Bantuan?</span>
-           </h1>
-           <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto text-lg">
-             Isi formulir di bawah ini untuk menghubungi kami. Kami akan membalas secepat mungkin.
-           </p>
+        <div className="relative z-10 w-full max-w-4xl">
+          
+          {/* --- HEADER --- */}
+          <div className="text-center mb-12 space-y-4" data-aos="fade-down">
+             <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white">
+               Butuh <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-emerald-600">Bantuan?</span>
+             </h1>
+             <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
+               Jangan ragu untuk menghubungi kami. Tim kami siap membantu menjawab pertanyaan Anda.
+             </p>
+          </div>
+
+          {/* --- FORMULIR UTAMA --- */}
+          <div className="bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden group hover:border-lime-500/30 transition-all duration-500" data-aos="fade-up">
+             
+             {/* Dekorasi Glow */}
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-lime-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+             
+             {/* Form */}
+             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+               
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Nama Lengkap</label>
+                    <input 
+                      type="text" required placeholder="Nama Anda"
+                      value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:bg-white dark:focus:bg-black focus:border-lime-500 focus:ring-1 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400"
+                    />
+                 </div>
+                 <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Alamat Email</label>
+                    <input 
+                      type="email" required placeholder="email@domain.com"
+                      value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:bg-white dark:focus:bg-black focus:border-lime-500 focus:ring-1 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400"
+                    />
+                 </div>
+               </div>
+
+               <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Subjek</label>
+                  <input 
+                    type="text" required placeholder="Contoh: Kendala Pembayaran / Kerjasama"
+                    value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                    className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:bg-white dark:focus:bg-black focus:border-lime-500 focus:ring-1 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400"
+                  />
+               </div>
+
+               <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Pesan</label>
+                  <textarea 
+                    required rows={6} placeholder="Jelaskan detail pertanyaan atau masalah Anda..."
+                    value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:bg-white dark:focus:bg-black focus:border-lime-500 focus:ring-1 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400 resize-none"
+                  />
+               </div>
+
+               <button 
+                 type="submit" 
+                 disabled={isSubmitting}
+                 className="w-full py-4 bg-lime-500 hover:bg-lime-400 text-black font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-lime-500/20 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed group/btn"
+               >
+                 {isSubmitting ? (
+                    <Loader2 className="animate-spin" />
+                 ) : (
+                    <>
+                      Kirim Pesan <Send size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </>
+                 )}
+               </button>
+
+             </form>
+          </div>
         </div>
+      </main>
 
-        {/* --- FORMULIR UTAMA --- */}
-        <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden" data-aos="fade-up">
-           
-           {/* Form */}
-           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                   <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Nama Lengkap</label>
-                   <input 
-                     type="text" required placeholder="Nama Anda"
-                     value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
-                     className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:border-lime-500 focus:ring-2 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400"
-                   />
-                </div>
-                <div className="space-y-2">
-                   <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Alamat Email</label>
-                   <input 
-                     type="email" required placeholder="email@domain.com"
-                     value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
-                     className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:border-lime-500 focus:ring-2 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400"
-                   />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                 <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Subjek Pesan</label>
-                 <input 
-                   type="text" required placeholder="Contoh: Kendala Pembayaran / Kerjasama"
-                   value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                   className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:border-lime-500 focus:ring-2 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400"
-                 />
-              </div>
-
-              <div className="space-y-2">
-                 <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider ml-1">Isi Pesan</label>
-                 <textarea 
-                   required rows={6} placeholder="Jelaskan detail pertanyaan Anda..."
-                   value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})}
-                   className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-gray-900 dark:text-white focus:border-lime-500 focus:ring-2 focus:ring-lime-500/20 outline-none transition-all placeholder:text-gray-400 resize-none"
-                 />
-              </div>
-
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="w-full py-4 bg-gray-900 dark:bg-lime-500 hover:bg-black dark:hover:bg-lime-400 text-white dark:text-black font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? <Loader2 className="animate-spin" /> : <Send size={18} />}
-                {isSubmitting ? "Mengirim..." : "Kirim Pesan Sekarang"}
-              </button>
-
-           </form>
-        </div>
-
-      </div>
-    </main>
+      <Footer />
+    </>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { educationData, organizationData, experienceData } from '@/app/information-menu/education';
+import { educationData, organizationData, experienceData } from '@/app/information-menu/data_education';
 
 const IconMapPin = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -17,7 +17,7 @@ const TrackRecord = () => {
   const visibleExperience = isExpanded ? experienceData : experienceData.slice(0, 5);
 
   return (
-    <section className="px-4 bg-white dark:bg-[#0a0a0a] md:px-8 max-w-[1600px] mx-auto overflow-hidden">
+    <section id="education" className="px-4 bg-white dark:bg-[#0a0a0a] md:px-8 max-w-[1600px] mx-auto overflow-hidden">
       <div className="flex flex-col items-end text-right mb-16 animate-fade-in-right">
         <h2 className="text-4xl md:text-6xl font-black text-neutral-900 dark:text-white tracking-tighter mb-2">
           Perjalanan <span className="text-lime-500">Saya</span>
@@ -32,7 +32,7 @@ const TrackRecord = () => {
         <div className="lg:col-span-2 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center gap-4 mb-4">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Pendidikan</h3>
-             <div className="flex-1 h-[1px] bg-gradient-to-r from-lime-500 to-transparent"></div>
+             <div className="flex-1 h-1px bg-linear-to-r from-lime-500 to-transparent"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -55,9 +55,6 @@ const TrackRecord = () => {
                   {edu.institution}
                 </h4>
                 <p className="text-sm font-semibold text-neutral-500 mb-3">{edu.degree}</p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2">
-                  {edu.description}
-                </p>
               </Link>
             ))}
           </div>
@@ -66,10 +63,10 @@ const TrackRecord = () => {
         <div className="lg:col-span-1 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
            <div className="flex items-center gap-4 mb-4">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Lokasi</h3>
-             <div className="flex-1 h-[1px] bg-gradient-to-r from-lime-500 to-transparent"></div>
+             <div className="flex-1 h-px bg-linear-to-r from-lime-500 to-transparent"></div>
           </div>
           <Link 
-            href="https://www.google.com/maps/place/Surabaya,+East+Java" 
+            href="https://maps.app.goo.gl/9hQ33Zgo55UQpMuK9" 
             target="_blank"
             className="block h-[280px] lg:h-[calc(100%-3rem)] w-full relative rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 group cursor-pointer"
           >
@@ -78,7 +75,7 @@ const TrackRecord = () => {
                style={{ backgroundImage: "url('https://static-maps.yandex.ru/1.x/?lang=en-US&ll=112.7521,-7.2575&z=12&l=map&size=600,450')" }} 
              ></div>
 
-             <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-transparent to-transparent group-hover:bg-black/10 transition-colors"></div>
+             <div className="absolute inset-0 bg-linear-to-t from-neutral-900/90 via-transparent to-transparent group-hover:bg-black/10 transition-colors"></div>
 
              <div className="absolute bottom-6 left-6 z-10">
                 <div className="flex items-center gap-2 mb-1">
@@ -99,7 +96,7 @@ const TrackRecord = () => {
       <div className="mb-20 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
          <div className="flex items-center gap-4 mb-6">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Organisasi</h3>
-             <div className="flex-1 h-[1px] bg-gradient-to-r from-lime-500 to-transparent"></div>
+             <div className="flex-1 h-px bg-linear-to-r from-lime-500 to-transparent"></div>
          </div>
 
          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
@@ -120,6 +117,9 @@ const TrackRecord = () => {
                   <h4 className="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-1 group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
                     {org.name}
                   </h4>
+                  <h4 className="font-mono text-lime-500 dark:text-white text-l leading-tight mb-1 group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
+                    {org.role}
+                  </h4>
                 </div>
                 
                 <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
@@ -134,7 +134,7 @@ const TrackRecord = () => {
       <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
          <div className="flex items-center gap-4 mb-6">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Pengalaman</h3>
-             <div className="flex-1 h-[1px] bg-gradient-to-r from-lime-500 to-transparent"></div>
+             <div className="flex-1 h-px bg-linear-to-r from-lime-500 to-transparent"></div>
          </div>
 
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
@@ -143,31 +143,19 @@ const TrackRecord = () => {
                  key={idx}
                  className="group relative p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-lime-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg animate-fade-in-up"
                >
-                 <span className={`absolute top-4 right-4 w-2 h-2 rounded-full 
-                    ${exp.type === 'Volunteer' ? 'bg-green-500' : 
-                      exp.type === 'Business' ? 'bg-blue-500' : 
-                      'bg-orange-500'
-                    } animate-pulse`}>
-                 </span>
 
                  <p className="text-xs font-mono text-neutral-400 mb-2">{exp.year}</p>
-                 <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-1 group-hover:text-lime-600 dark:group-hover:text-lime-400 truncate">
+                 <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-1 group-hover:text-lime-600 dark:group-hover:text-lime-400">
                    {exp.role}
                  </h4>
                  <p className="text-xs text-neutral-500 mb-3 truncate">@ {exp.company}</p>
-
-                 <div className="mt-2">
-                    <span className="inline-block px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-[10px] font-bold text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700">
-                      {exp.type}
-                    </span>
-                 </div>
                </div>
             ))}
          </div>
 
          {experienceData.length > 5 && (
             <div className="flex justify-center mt-8 relative z-10">
-                <div className="absolute top-1/2 left-0 w-full h-[1px] bg-neutral-200 dark:border-neutral-800 -z-10"></div>
+                <div className="absolute top-1/2 left-0 w-full h-px bg-neutral-200 dark:border-neutral-800 -z-10"></div>
 
                 <button 
                     onClick={() => setIsExpanded(!isExpanded)}

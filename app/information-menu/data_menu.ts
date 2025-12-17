@@ -1,3 +1,4 @@
+import { IconMoneybag } from "@tabler/icons-react";
 import { 
   Layout, Globe, Bell, User, Book, FolderArchive, LandPlot,
   LifeBuoy, HelpCircle, Shield, FileText, MessageCircleMore,
@@ -12,7 +13,7 @@ export const exploreMenu = [
     items: [
       { label: "Blog", href: "/more/blog", badge: null , icon: Globe },
       { label: "Testimonial", href: "/more/testimonials", badge: null, icon: Bell },
-      // { label: "Galeri", href: "/page/new", badge: "segera", icon: User },
+      { label: "Langganan", href: "/more/pricing", badge: null , icon: IconMoneybag },
       // { label: "Sertifikat", href: "/page/coming", badge: "update", icon: Book },
       // { label: "Pendidikan", href: "/page/coming", badge: "update", icon: FolderArchive },
       // { label: "Alat Gratis", href: "/page/new", badge: "segera", icon: LandPlot },

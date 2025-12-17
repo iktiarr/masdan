@@ -78,7 +78,7 @@ export default function MaintenancePage() {
           </div>
           
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
-            SEDANG DALAM <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-500">PERBAIKAN</span>
+            SEDANG DALAM <span className="text-transparent bg-clip-text bg-linear-to-r from-lime-400 to-emerald-500">PERBAIKAN</span>
           </h1>
           
           <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-md mx-auto">
