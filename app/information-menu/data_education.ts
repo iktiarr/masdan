@@ -34,15 +34,16 @@ export const educationData: EducationItem[] = [
 ];
 
 export const organizationData: OrgItem[] = [
-  { name: "Osis SMAN 1 Pademawu", role: "Sekretaris", year: "2025 - Sekarang", link: "#" },
-  { name: "FPMP - Forum Persatuan Mahasiswa Pamekasan", role: "#", year: "2023 - Sekarang", link: "#" },
-  { name: "EECOM - Engineering English Community", role: "#", year: "2023 - Sekarang", link: "#" },
-  { name: "Triple - C", role: "#", year: "2025 - Sekarang", link: "#" },
+  { name: "Osis SMAN 1 Pademawu", role: "Sekretaris", year: "2021 - 2022", link: "#" },
+  { name: "HIMO Kab Pamekasan", role: "Sekretaris", year: "2022 - 2023", link: "#" },
+  { name: "MGMP Sejarah Kab Pamekasan", role: "Staff", year: "2023 - 2024", link: "#" },
+  { name: "FPMP - Forum Persatuan Mahasiswa Pamekasan", role: "Pengurus", year: "2023 - Sekarang", link: "#" },
+  { name: "EECOM - Engineering English Community", role: "Staff", year: "2023 - Sekarang", link: "#" },
+  { name: "Triple - C", role: "Staff", year: "2025 - Sekarang", link: "#" },
+  { name: "Gerakan Mengajar Desa", role: "Tutor Inspriratif", year: "2025 - Sekarang", link: "#" },
 ];
 
-// Masukkan 30 list pengalaman di sini
 export const experienceData: ExperienceItem[] = [
   { company: "FPMP", role: "Staff Sie Perkap Basic Of Training FPMP 2025", year: "2025"},
   { company: "Gerakan Mengajar Desa", role: "Tutor Inspriratif Generasi Desa", year: "2026"},
-  
 ];

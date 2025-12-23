@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, LayoutGrid, ChevronRight } from "lucide-react";
@@ -15,7 +15,26 @@ const getBadgeStyle = (text: string) => {
 };
 
 export default function ExplorePage() {
+  // 1. State awal tetap default dulu
   const [selectedCategory, setSelectedCategory] = useState<string>(exploreMenu[0].category);
+
+  // 2. [FIX] Gunakan useEffect untuk mengecek memori saat halaman dimuat
+  useEffect(() => {
+    // Cek apakah ada data tersimpan di sessionStorage?
+    const savedCategory = sessionStorage.getItem("explore_last_category");
+    
+    // Jika ada, dan kategorinya valid (ada di dalam exploreMenu), kita pakai itu
+    if (savedCategory && exploreMenu.some(item => item.category === savedCategory)) {
+      setSelectedCategory(savedCategory);
+    }
+  }, []);
+
+  // 3. [FIX] Fungsi khusus untuk mengganti kategori sekaligus menyimpan ke memori
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    sessionStorage.setItem("explore_last_category", category);
+  };
+
   const displayItems = exploreMenu.find(v => v.category === selectedCategory)?.items || [];
 
   return (
@@ -69,7 +88,7 @@ export default function ExplorePage() {
               return (
                 <button
                   key={idx}
-                  onClick={() => setSelectedCategory(section.category)}
+                  onClick={() => handleCategoryChange(section.category)} // Gunakan fungsi handler baru
                   className={`w-full flex items-center justify-between p-3 rounded-xl transition-all relative overflow-hidden ${
                     active
                       ? "bg-lime-500 text-black shadow-lg shadow-lime-500/20 font-bold"

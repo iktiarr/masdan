@@ -52,7 +52,7 @@ export default function HeroSection() {
           transition={{ duration: 0.7 }}
           className="relative mx-auto order-1"
         >
-          <div className="absolute inset-0 w-full h-full bg-linear-to-tr from-lime-200 via-green-100 to-transparent dark:from-lime-300 dark:via-lime-500 rounded-full blur-3xl opacity-60 dark:opacity-40"></div>
+          <div className="absolute inset-0 w-full h-full bg-linear-to-tr from-lime-200 via-green-100 to-transparent dark:from-white/10 dark:via-lime-300 rounded-full blur-3xl opacity-60 dark:opacity-40"></div>
 
           <div className="relative w-full max-w-md mx-auto">
             <img
@@ -61,20 +61,17 @@ export default function HeroSection() {
               width={500}
               height={500}
               loading="lazy"
-              className="w-full h-auto drop-shadow-xl"
+              className="w-full h-auto drop-shadow-xl dark:drop-shadow-amber-50"
             />
 
             <motion.div 
               initial={prefersReducedMotion ? {} : { y: 20, opacity: 0 }}
               animate={prefersReducedMotion ? {} : { y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="absolute -bottom-4 right-2 md:right-8 bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-sm p-4 rounded-2xl border border-lime-200 dark:border-white/10 shadow-xl max-w-[210px]"
+              className="absolute -bottom-4 right-2 md:right-8 bg-white/90 dark:bg-[#626262] backdrop-blur-sm p-4 rounded-2xl border border-lime-200 dark:border-white/10 shadow-xl max-w-[210px]"
             >
               <div className="flex gap-3">
-                <div className="p-2 bg-lime-100 dark:bg-lime-500/20 rounded-lg text-lime-600 dark:text-lime-400">
-                  <MousePointer2 size={18} />
-                </div>
-                <p className="text-xs font-semibold text-gray-900 dark:text-white italic">
+                <p className="text-xs font-semibold text-gray-900 dark:text-white italic border-lime-50">
                   "Inovasi adalah kunci untuk membuka masa depan"
                 </p>
               </div>
@@ -83,7 +80,7 @@ export default function HeroSection() {
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, -12, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -top-6 right-10 p-3 bg-white dark:bg-[#1a1a1a] rounded-xl border border-lime-100 dark:border-white/10 shadow-lg"
+              className="absolute top-2 right-10 p-3 bg-white dark:bg-[#626262] rounded-xl border border-lime-100 dark:border-white/10 shadow-lg"
             >
               <Smartphone className="text-lime-500 dark:text-lime-400 w-6 h-6" />
             </motion.div>
@@ -91,7 +88,7 @@ export default function HeroSection() {
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, 12, 0] }}
               transition={{ duration: 4.5, repeat: Infinity }}
-              className="absolute top-1/3 -left-6 md:-left-14 p-3 bg-white dark:bg-[#1a1a1a] rounded-xl border border-lime-100 dark:border-white/10 shadow-lg"
+              className="absolute top-1/3 -left-6 md:-left-14 p-3 bg-white dark:bg-[#626262] rounded-xl border border-lime-100 dark:border-white/10 shadow-lg"
             >
               <Code2 className="text-lime-600 dark:text-lime-400 w-6 h-6" />
             </motion.div>
@@ -99,7 +96,7 @@ export default function HeroSection() {
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, -10, 0], x: [0, 6, 0] }}
               transition={{ duration: 5, repeat: Infinity }}
-              className="absolute top-0 left-12 p-2.5 bg-white dark:bg-[#1a1a1a] rounded-xl border border-lime-100 dark:border-white/10 shadow-lg"
+              className="absolute top-0 left-12 p-2.5 bg-white dark:bg-[#626262] rounded-xl border border-lime-100 dark:border-white/10 shadow-lg"
             >
               <Database className="text-lime-500 dark:text-lime-400 w-5 h-5" />
             </motion.div>

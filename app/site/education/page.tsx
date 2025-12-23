@@ -13,8 +13,14 @@ const IconArrowRight = () => (
 );
 
 const TrackRecord = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const visibleExperience = isExpanded ? experienceData : experienceData.slice(0, 5);
+  // State untuk Organisasi
+  const [isOrgExpanded, setIsOrgExpanded] = useState(false);
+  // State untuk Pengalaman
+  const [isExpExpanded, setIsExpExpanded] = useState(false);
+
+  // Logika pembatasan data
+  const visibleOrganization = isOrgExpanded ? organizationData : organizationData.slice(0, 4);
+  const visibleExperience = isExpExpanded ? experienceData : experienceData.slice(0, 5);
 
   return (
     <section id="education" className="px-4 bg-white dark:bg-[#0a0a0a] md:px-8 max-w-[1600px] mx-auto overflow-hidden">
@@ -29,10 +35,11 @@ const TrackRecord = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+        {/* --- BAGIAN PENDIDIKAN (Tetap) --- */}
         <div className="lg:col-span-2 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center gap-4 mb-4">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Pendidikan</h3>
-             <div className="flex-1 h-1px bg-linear-to-r from-lime-500 to-transparent"></div>
+             <div className="flex-1 h-px bg-linear-to-r from-lime-500 to-transparent"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -60,6 +67,7 @@ const TrackRecord = () => {
           </div>
         </div>
 
+        {/* --- BAGIAN LOKASI (Tetap) --- */}
         <div className="lg:col-span-1 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
            <div className="flex items-center gap-4 mb-4">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Lokasi</h3>
@@ -93,14 +101,16 @@ const TrackRecord = () => {
         </div>
       </div>
 
+      {/* --- BAGIAN ORGANISASI (Diupdate) --- */}
       <div className="mb-20 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
          <div className="flex items-center gap-4 mb-6">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Organisasi</h3>
              <div className="flex-1 h-px bg-linear-to-r from-lime-500 to-transparent"></div>
          </div>
 
-         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-            {organizationData.map((org, idx) => (
+         {/* Grid diubah untuk mapping visibleOrganization */}
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {visibleOrganization.map((org, idx) => (
               <Link 
                 href={org.link}
                 key={idx}
@@ -129,8 +139,30 @@ const TrackRecord = () => {
               </Link>
             ))}
          </div>
+
+         {/* Tombol Expand untuk Organisasi */}
+         {organizationData.length > 4 && (
+            <div className="flex justify-center mt-8 relative z-10">
+                <div className="absolute top-1/2 left-0 w-full h-px bg-neutral-200 dark:border-neutral-800 -z-10"></div>
+                <button 
+                    onClick={() => setIsOrgExpanded(!isOrgExpanded)}
+                    className="group flex items-center gap-2 px-6 py-2.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 hover:border-lime-500 hover:text-lime-600 dark:hover:text-lime-400 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
+                >
+                    <span className="text-sm font-bold text-gray-700 dark:text-neutral-300 group-hover:text-lime-600 dark:group-hover:text-lime-400">
+                        {isOrgExpanded ? 'Persingkat Tampilan' : `Lihat Semua (${organizationData.length - 4}+ Lainnya)`}
+                    </span>
+                    <svg 
+                        className={`w-4 h-4 transition-transform duration-300 ${isOrgExpanded ? 'rotate-180' : ''}`} 
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
+            </div>
+         )}
       </div>
 
+      {/* --- BAGIAN PENGALAMAN (Tetap, dengan state baru) --- */}
       <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
          <div className="flex items-center gap-4 mb-6">
              <h3 className="text-2xl font-bold text-lime-500 dark:text-lime-500">Pengalaman</h3>
@@ -143,7 +175,6 @@ const TrackRecord = () => {
                  key={idx}
                  className="group relative p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-lime-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg animate-fade-in-up"
                >
-
                  <p className="text-xs font-mono text-neutral-400 mb-2">{exp.year}</p>
                  <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-1 group-hover:text-lime-600 dark:group-hover:text-lime-400">
                    {exp.role}
@@ -153,20 +184,19 @@ const TrackRecord = () => {
             ))}
          </div>
 
+         {/* Tombol Expand untuk Pengalaman */}
          {experienceData.length > 5 && (
             <div className="flex justify-center mt-8 relative z-10">
                 <div className="absolute top-1/2 left-0 w-full h-px bg-neutral-200 dark:border-neutral-800 -z-10"></div>
-
                 <button 
-                    onClick={() => setIsExpanded(!isExpanded)}
+                    onClick={() => setIsExpExpanded(!isExpExpanded)}
                     className="group flex items-center gap-2 px-6 py-2.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 hover:border-lime-500 hover:text-lime-600 dark:hover:text-lime-400 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
                 >
                     <span className="text-sm font-bold text-gray-700 dark:text-neutral-300 group-hover:text-lime-600 dark:group-hover:text-lime-400">
-                        {isExpanded ? 'Persingkat Tampilan' : `Lihat Semua (${experienceData.length - 5}+ Lainnya)`}
+                        {isExpExpanded ? 'Persingkat Tampilan' : `Lihat Semua (${experienceData.length - 5}+ Lainnya)`}
                     </span>
-                    
                     <svg 
-                        className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
+                        className={`w-4 h-4 transition-transform duration-300 ${isExpExpanded ? 'rotate-180' : ''}`} 
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                     >
                         <path d="m6 9 6 6 6-6"/>

@@ -101,7 +101,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
           <button onClick={() => scrollToSection("hero")} className="flex items-center gap-2 cursor-pointer group">
             <div className="w-8 h-8 rounded-lg overflow-hidden group-hover:rotate-12 transition-transform">
-              <Image src="/ikon_header.png" alt="Logo" width={32} height={32} className="object-cover w-full h-full" priority />
+              <Image src="/ikon_header.png" alt="Logo" width={32} height={32} className="object-cover w-full h-full dark:invert" priority />
             </div>
           </button>
 
@@ -154,48 +154,65 @@ export default function Header() {
                         transition-all duration-200"
             >
               <LogOut size={16} />
-              Whats In Here
+              Ada Apa Di Sini!
             </Link>
 
           </div>
 
           <div className="flex md:hidden items-center gap-3">
-            <button onClick={() => setOpenCmd(true)} className="p-2 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300">
+            <button onClick={() => setOpenCmd(true)} className="p-2 rounded-full bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300">
               <Search size={20} />
             </button>
+
             {mounted && (
               <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="p-2 rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300">
                 {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
               </button>
             )}
+
             <Sheet open={isBurgerOpen} onOpenChange={setIsBurgerOpen}>
               <SheetTrigger className="p-2 rounded-xl bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10">
                 <Menu className="text-gray-800 dark:text-white w-6 h-6" />
               </SheetTrigger>
+              
               <SheetContent side="right" className="w-[300px] bg-white dark:bg-[#0a0a0a] border-l border-gray-200 dark:border-white/10 overflow-y-auto p-0 flex flex-col h-full [&_button[aria-label='Close']]:hidden">
-                 <nav className="p-4 space-y-1 flex-1">
-                    {navItems.map((item) => (
-                      <button key={item.id} onClick={() => scrollToSection(item.id)} className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5">
+                <nav className="p-4 space-y-1 flex-1">
+                  {navItems.map((item) => {
+                    const isActive = activeSection === item.id; 
+
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          scrollToSection(item.id);
+                        }}
+                        className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
+                          ${isActive 
+                            ? "bg-lime-100 dark:bg-lime-50/15 text-lime-700 dark:text-lime-400 font-bold border-l-4 border-lime-500" 
+                            : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5 border-l-4 border-transparent"
+                          }`}
+                      >
                         {item.label}
                       </button>
-                    ))}
-                 </nav>
+                    );
+                  })}
+                </nav>
 
-                 <div className="p-4 border-t border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5">
-                    <Link
-                      href="/page/logout"
-                      onClick={() => setIsBurgerOpen(false)}
-                      className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl
-                                text-sm font-bold text-white
-                                bg-linear-to-r from-purple-500 via-pink-500 to-orange-400
-                                shadow-lg shadow-pink-500/20
-                                hover:shadow-pink-500/40 hover:scale-[1.02]
-                                transition-all duration-200 ease-out"
-                    >
-                      <LogOut size={18} />
-                      Go To Instagram
-                    </Link>
-                 </div>
+                <div className="p-4 border-t border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5">
+                  <Link
+                    href="/page/logout"
+                    onClick={() => setIsBurgerOpen(false)}
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl
+                            text-sm font-bold text-white
+                            bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400
+                            shadow-lg shadow-pink-500/20
+                            hover:shadow-pink-500/40 hover:scale-[1.02]
+                            transition-all duration-200 ease-out"
+                  >
+                    <LogOut size={18} />
+                    Go To Instagram
+                  </Link>
+                </div>
               </SheetContent>
             </Sheet>
           </div>

@@ -3,7 +3,11 @@ import {
   Layout, Globe, Bell, User, Book, FolderArchive, LandPlot,
   LifeBuoy, HelpCircle, Shield, FileText, MessageCircleMore,
   Layers, MessageSquare, Zap, Brush, Briefcase,
-  Grid, BarChart2, Gamepad, Component, HandFist
+  Grid, BarChart2, Gamepad, Component, HandFist,
+  ToolCase,
+  Pen,
+  BottleWine,
+  Blinds,
 } from "lucide-react";
 
 export const exploreMenu = [
@@ -14,9 +18,6 @@ export const exploreMenu = [
       { label: "Blog", href: "/more/blog", badge: null , icon: Globe },
       { label: "Testimonial", href: "/more/testimonials", badge: null, icon: Bell },
       { label: "Langganan", href: "/more/pricing", badge: null , icon: IconMoneybag },
-      // { label: "Sertifikat", href: "/page/coming", badge: "update", icon: Book },
-      // { label: "Pendidikan", href: "/page/coming", badge: "update", icon: FolderArchive },
-      // { label: "Alat Gratis", href: "/page/new", badge: "segera", icon: LandPlot },
     ]
   },
   {
@@ -34,9 +35,6 @@ export const exploreMenu = [
     icon: Layers,
     items: [
       { label: "Komunitas", href: "/more/comunity", badge: null , icon: MessageSquare },
-      // { label: "Langganan Belajar", href: "/page/coming", badge: "update", icon: Zap },
-      // { label: "Pesanan Kostum", href: "/page/new", badge: "segera", icon: Brush },
-      // { label: "Karir", href: "/page/new", badge: "segera", icon: Briefcase },
     ]
   },
   {
@@ -44,10 +42,8 @@ export const exploreMenu = [
     icon: Grid,
     items: [
       { label: "Catatan Rilis", href: "/more/releases", badge: null , icon: Layers },
-      // { label: "Analisis Data", href: "/analytics", badge: "segera", icon: BarChart2 },
-      // { label: "Permainan", href: "/page/new", badge: "segera", icon: Gamepad },
-      // { label: "Chat Ai", href: "/page/new", badge: "segera", icon: Component },
-      // { label: "Tim Kerja", href: "/page/new", badge: "segera", icon: HandFist },
+      { label: "Laboratorium Kami", href: "/more/labs", badge: null, icon: Blinds },
+      { label: "Alat Bantu Kami", href: "/more/uses", badge: null, icon: Gamepad },
     ]
   }
 ];
