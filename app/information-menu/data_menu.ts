@@ -35,6 +35,10 @@ export const exploreMenu = [
     icon: Layers,
     items: [
       { label: "Komunitas", href: "/more/comunity", badge: null , icon: MessageSquare },
+      { label: "Freebies", href: "/more/freebies", badge: null, icon: FileText },
+      { label: "My Qoutes", href: "/more/qoutes", badge: null, icon: FileText },
+      { label: "Events", href: "/more/events", badge: null, icon: FileText },
+      { label: "Musik", href: "/more/music", badge: null, icon: FileText },
     ]
   },
   {
