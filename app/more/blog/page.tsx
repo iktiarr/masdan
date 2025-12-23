@@ -23,11 +23,6 @@ import Navbar from "@/app/asset/navbar_atas";
 import Footer from "@/app/asset/footer_bawah";
 import SimpleHeader from "@/app/asset/navbar_atas";
 
-export const metadata = {
-  title: "Blog masdan - Tempat berbagi cerita, artikel dan tulisan",
-  description: "Lihat beberapa cerita seru yang pernah kami buat untuk anda",
-};
-
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || "",
