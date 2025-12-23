@@ -39,6 +39,7 @@ export const exploreMenu = [
       { label: "My Qoutes", href: "/more/qoutes", badge: null, icon: FileText },
       { label: "Events", href: "/more/events", badge: null, icon: FileText },
       { label: "Musik", href: "/more/music", badge: null, icon: FileText },
+      { label: "Donasi Bersama", href: "/more/donation", badge: null, icon: FileText },
     ]
   },
   {
