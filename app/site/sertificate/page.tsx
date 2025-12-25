@@ -134,7 +134,7 @@ export default function CertificatesPage() {
 
   return (
     <>
-      <section id="certificates" className="relative bg-white dark:bg-[#0a0a0a] transition-colors duration-300 px-6">
+      <section id="certificates" className="relative py-15 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 px-6">
         
         {/* HEADER */}
         <header className="text-center mb-20 space-y-4" data-aos="fade-down">

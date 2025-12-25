@@ -22,7 +22,7 @@ export default function AboutSection() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative py-24 bg-white dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-300"
+      className="relative py-15 bg-white dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-300"
     >
       <div className="max-w-6xl mx-auto relative z-10 px-6">
 
@@ -114,13 +114,14 @@ export default function AboutSection() {
                   <strong className="text-gray-900 dark:text-white">
                     Iktiar Ramadani
                   </strong>
-                  . Perjalanan saya dimulai dari rasa ingin tahu sederhana:
+                  . Saya adalah seorang mahasiswa yang memiliki minat dalam teknologi 
+                  terutama dalam bidang pengembangan sistem. Perjalanan saya dimulai dari rasa ingin tahu sederhana:
                   <em> "Bagaimana sesuatu bekerja?"</em> Hingga kini berkembang
                   menjadi ambisi menciptakan sistem digital dan rasa ingin tahu
                   yang besar.
                 </p>
                 <p>
-                  Saya tidak ingin hanya menulis baris kode, namun{" "}
+                  Saya tidak ingin hanya menulis baris kode atau hanya membuat suatu sistem, namun{" "}
                   <strong className="text-gray-900 dark:text-white border-b-2 border-lime-400 pb-0.5">
                     memecahkan hal yang tampak tidak masuk akal
                   </strong>

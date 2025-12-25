@@ -80,7 +80,7 @@ export default function MusicPage() {
   // --- UI COMPONENTS ---
   // Komponen Visualizer Bar (Gelombang Suara)
   const MusicBars = () => (
-    <div className="flex items-end gap-[2px] h-4 ml-3">
+    <div className="flex items-end gap-2px h-4 ml-3">
       <span className="w-1 bg-lime-500 rounded-t-sm animate-[music-bar_1s_ease-in-out_infinite]"></span>
       <span className="w-1 bg-lime-500 rounded-t-sm animate-[music-bar_1.2s_ease-in-out_infinite_0.1s]"></span>
       <span className="w-1 bg-lime-500 rounded-t-sm animate-[music-bar_0.8s_ease-in-out_infinite_0.2s]"></span>

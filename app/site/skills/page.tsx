@@ -84,7 +84,7 @@ export default function SkillsPage() {
   const SECTIONS: SectionKey[] = Object.keys(SECTION_INFO) as SectionKey[];
 
   return (
-    <section id="skills" className="relative py-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 px-6">
+    <section id="skills" className="relative py-15 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 px-6">
       <header className="text-center mb-20 space-y-4" data-aos="fade-down">
         <h2 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white tracking-tighter">
           Keahlian &{" "}

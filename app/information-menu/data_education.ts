@@ -20,16 +20,16 @@ export interface ExperienceItem {
 
 export const educationData: EducationItem[] = [
   {
-    institution: "Universitas Trunojoyo Madura",
-    degree: "S1 Sistem Informasi",
-    year: "2023 - Sekarang",
-    link: "https://www2.trunojoyo.ac.id/",
-  },
-  {
     institution: "SMA Negeri 1 Pademawu",
     degree: "IPA / MIPA",
     year: "2020 - 2023",
     link: "https://sman1pademawu.sch.id/",
+  },
+  {
+    institution: "Universitas Trunojoyo Madura",
+    degree: "S1 Sistem Informasi",
+    year: "2023 - Sekarang",
+    link: "https://www2.trunojoyo.ac.id/",
   },
 ];
 

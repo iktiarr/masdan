@@ -70,7 +70,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       aria-label="Produk dan Result"
-      className="relative py-24 bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white font-sans overflow-hidden transition-colors duration-300"
+      className="relative py-15 bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white font-sans overflow-hidden transition-colors duration-300"
     >
       <ProductOverlay
         isOpen={isProductOpen}

@@ -152,7 +152,7 @@ export default function MediaPage() {
   };
 
   return (
-    <main id="media" className="relative min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white selection:bg-lime-500/30 flex items-start justify-center py-24 transition-colors duration-300">
+    <main id="media" className="relative min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white selection:bg-lime-500/30 flex items-start justify-center py-15 transition-colors duration-300">
       <div className="w-full max-w-6xl px-6">
         <header className="text-center mb-12" data-aos="fade-down">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4">

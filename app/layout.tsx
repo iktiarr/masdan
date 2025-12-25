@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://masdan.vercel.app'), 
 
   title: {
-    default: "Iktiar Ramadani (Masdan) - Fullstack Developer & Creator",
+    default: "Iktiar Ramadani - Masdan",
     template: "%s | Iktiar Ramadani",
   },
   description: "Portfolio resmi Iktiar Ramadani (Masdan). Seorang Fullstack Developer, Content Creator, dan Founder Komunitas Masdan. Temukan hal baru berupa fitur, halamaan, project, event, dan sharing seputar teknologi serta hal menarik lainnya di sini.",

@@ -10,37 +10,42 @@ import {
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Command as CommandPrimitive } from "cmdk"; 
-
 import { navItems, getCommandGroups } from "@/app/information-menu/data_command_pallet_header";
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  
   const [activeSection, setActiveSection] = useState("hero");
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const [openCmd, setOpenCmd] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
-
   const commandGroups = getCommandGroups({
     router,
     setTheme,
     scrollToSection: (id) => scrollToSection(id)
   });
 
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpenCmd((open) => !open);
-      }
-    };
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+  
+  const scrollToSection = (id: string) => {
+    if (pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(id);
+      setIsBurgerOpen(false);
+      setOpenCmd(false);
+    }
+  };
 
+  const runCommand = (action: () => void) => {
+    setOpenCmd(false);
+    action();
+  };
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
@@ -68,25 +73,17 @@ export default function Header() {
     }
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToSection = (id: string) => {
-    if (pathname !== "/") {
-      window.location.href = `/#${id}`;
-      return;
-    }
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setActiveSection(id);
-      setIsBurgerOpen(false);
-      setOpenCmd(false);
-    }
-  };
-
-  const runCommand = (action: () => void) => {
-    setOpenCmd(false);
-    action();
-  };
+  
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpenCmd((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   return (
     <>
@@ -154,7 +151,6 @@ export default function Header() {
                         transition-all duration-200"
             >
               <LogOut size={16} />
-              Ada Apa Di Sini!
             </Link>
 
           </div>
@@ -210,7 +206,7 @@ export default function Header() {
                             transition-all duration-200 ease-out"
                   >
                     <LogOut size={18} />
-                    Go To Instagram
+                    Instagram
                   </Link>
                 </div>
               </SheetContent>
