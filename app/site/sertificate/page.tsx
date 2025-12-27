@@ -138,12 +138,15 @@ export default function CertificatesPage() {
         
         {/* HEADER */}
         <header className="text-center mb-20 space-y-4" data-aos="fade-down">
-          <h2 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white tracking-tighter">
-            Sertifikat & <span className="text-lime-500">Docs</span>
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-            Lihat langsung ke berbagai dokumen saya.
-          </p>
+          <div className="flex flex-col items-end text-right mb-16 animate-fade-in-right">
+            <h2 className="text-4xl md:text-6xl font-black text-neutral-900 dark:text-white tracking-tighter mb-2">
+              Dokumen <span className="text-lime-500">Saya</span>
+            </h2>
+            <div className="h-1 w-32 bg-lime-500 mb-4 rounded-full"></div>
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl text-lg leading-relaxed">
+              hasil dari jerih payah saya untuk menjadi yang lebih baik setiap harinya.
+            </p>
+          </div>
         </header>
 
         <div className="max-w-7xl mx-auto">

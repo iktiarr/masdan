@@ -156,7 +156,7 @@ export default function HeroSection() {
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" />
-                Special Page
+                Another Site For You!
               </span>
 
               <span

@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import AnnouncementBar from "@/app/page/anouncements/AnnouncementBar";
-// import AnnouncementBar2 from "@/app/page/anouncements/bar2/page";
+// import AnnouncementBar2 from "@/app/page/anouncements/AnnouncementBar";
 // import Steper from "@/app/page/steper/Onboarding";
 import ScrollProgress from "@/app/components/ScrollProgress";
 import UpdatePopup from "@/app/components/UpdatePopup";
@@ -128,7 +128,7 @@ export default function RootLayout({
           <UpdatePopup/>
           {/* <MaintenanceNotification /> */}
           {/* <Steper /> */}
-          <AnnouncementBar />
+          {/* <AnnouncementBar /> */}
           <CookieBanner />
           {/* <AnnouncementBar2 /> */}
           {/* <BackToTop /> */}

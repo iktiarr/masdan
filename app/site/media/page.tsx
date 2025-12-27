@@ -155,17 +155,16 @@ export default function MediaPage() {
     <main id="media" className="relative min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white selection:bg-lime-500/30 flex items-start justify-center py-15 transition-colors duration-300">
       <div className="w-full max-w-6xl px-6">
         <header className="text-center mb-12" data-aos="fade-down">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4">
-            Ayo Terhubung
-            <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-lime-500 to-emerald-600">
-              & Saling Kolaborasi
-            </span>
-          </h1>
-          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base md:text-lg">
-            Jelajahi ekosistem digital saya. Temukan konten, diskusi, dan peluang kolaborasi di berbagai platform.
-          </p>
+          <div className="flex flex-col items-center mb-16 animate-fade-in-right">
+            <h2 className="text-4xl md:text-6xl font-black text-neutral-900 dark:text-white tracking-tighter mb-2">
+              Perjalanan <span className="text-lime-500">Saya</span>
+            </h2>
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl text-lg leading-relaxed">
+              Berikut adalah perjalanan pendidikan dan beberapa pengalaman yang pernah saya dapatkan hingga saat ini.
+            </p>
+          </div>
         </header>
+
 
         <section aria-labelledby="socials-heading" className="mb-12">
           <h2 id="socials-heading" className="sr-only">Platform Sosial</h2>

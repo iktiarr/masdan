@@ -85,13 +85,11 @@ export default function ProjectsSection() {
 
       <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div className="text-center lg:text-left space-y-8" data-aos="fade-right">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
-            Produk & Result
-            <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-lime-500 to-emerald-600">
-              Kualitas Terbaik.
-            </span>
-          </h2>
+            <div className="flex flex-col items-center mb-2 animate-fade-in-right">
+              <h2 className="text-4xl md:text-6xl font-black text-neutral-900 dark:text-white tracking-tighter mb-2">
+                <span className="text-lime-500">Produk & Hasil </span>Saya
+              </h2>
+            </div>
 
           <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
             Koleksi template, source code, dan aset digital berkualitas tinggi untuk mempercepat development Anda. Hemat waktu, hasil maksimal.

@@ -7,34 +7,38 @@ export interface ReleaseItem {
   version: string;
   date: string;
   title: string;
-  description: string; // Deskripsi singkat untuk header Popup
+  description: string;
   isLatest: boolean;
   changes: ReleaseChange[];
 }
 
 export const releasesData: ReleaseItem[] = [
   {
-    version: "v1.3.0",
-    date: "22 Desember 2025",
-    title: "Big Update: Arsip & UI",
-    description: "Kami baru saja merilis fitur Arsip Dokumen dan perbaikan tampilan Track Record.",
-    isLatest: true, // <--- Cukup pindahkan ini ke object lain jika ada update baru
+    version: "v1.4.0",
+    date: "27 Desember 2025",
+    title: "Perbaikan dan Update Fitur",
+    description: "Kami baru saja merilis beberapa fitur terbaru, silahkan membaca catatan liris kami",
+    isLatest: true,
     changes: [
       { 
         type: "new", 
-        text: "Arsip Dokumen Digital: Fitur baru untuk preview sertifikat & dokumen secara langsung." 
+        text: "Beberapa fitur terbaru seperti halaman ddokumen dan halaman fitur lainnya." 
+      },
+      { 
+        type: "new", 
+        text: "Menyiapkan fitur dan halaman baru bagi pengguna" 
       },
       { 
         type: "update", 
-        text: "Track Record UI: Tampilan riwayat pendidikan kini lebih interaktif dengan peta." 
+        text: "Memperbaiki tampilan halaman agar lebih mudah dibaca dan lebih menyesuaikan" 
       },
       { 
         type: "fix", 
-        text: "Clean Design System: Perbaikan padding pada mode mobile agar lebih responsif." 
+        text: "Memperbaiki masalah yang terjadi pada setiap halaman" 
       },
       { 
         type: "fix", 
-        text: "Sistem Maintenance: Peningkatan keamanan dan stabilitas server." 
+        text: "Meningkatkan performa dan analisa sistem serta data agar lebih nyaman digunakan" 
       }
     ]
   },

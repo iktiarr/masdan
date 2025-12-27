@@ -26,25 +26,14 @@ export default function AboutSection() {
     >
       <div className="max-w-6xl mx-auto relative z-10 px-6">
 
-        <motion.header
-          initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 flex flex-col md:flex-row md:items-end gap-2 md:gap-6"
-        >
-          <div className="relative">
-            <h2
-              id="about-heading"
-              className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white tracking-tighter leading-[0.85]"
-            >
-              Tentang{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-lime-300 to-lime-600">
-                Saya
-              </span>
+        <header className="text-center mb-12" data-aos="fade-down">
+          <div className="flex flex-col items-center mb-16 animate-fade-in-right">
+            <h2 className="text-4xl md:text-6xl font-black text-neutral-900 dark:text-white tracking-tighter mb-2">
+              Tentang <span className="text-lime-500">Siapa Saya</span>?
             </h2>
-            <div className="absolute -bottom-2 left-2 w-1/2 h-2 bg-lime-400/30 dark:bg-lime-500/20 rounded-full" />
           </div>
-        </motion.header>
+        </header>
+
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
